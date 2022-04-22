@@ -41,7 +41,7 @@ print(125, plural_form(125, 'яблоко', 'яблока', 'яблок'))
 
 
 #Декоратор html
-def html(a, width='', height='', href=''):
+def html(a, width=0, height=0, href=''):
 
     def decorator(decorated_function):
 
@@ -50,11 +50,11 @@ def html(a, width='', height='', href=''):
             result_decorated_function = f'<{a}>{decorated_function(input_value)}</{a}>'
 
             if width and height:
-                result_decorated_function = f'<{a} width="{width}" height="{height}">{decorated_function(input_value)}</{a}>'
+                result_decorated_function = f'<{a} width="{str(width)}" height="{str(height)}">{decorated_function(input_value)}</{a}>'
             elif width:
-                result_decorated_function = f'<{a} width="{width}">{decorated_function(input_value)}</{a}>'    
+                result_decorated_function = f'<{a} width="{str(width)}">{decorated_function(input_value)}</{a}>'    
             elif height:
-                result_decorated_function = f'<{a} height="{height}">{decorated_function(input_value)}</{a}>'
+                result_decorated_function = f'<{a} height="{str(height)}">{decorated_function(input_value)}</{a}>'
                 
             if href:
                 result_decorated_function = f'<{a} href="{href}">{decorated_function(input_value)}</{a}>'              
