@@ -50,11 +50,11 @@ def html(a, width='', height='', href=''):
             result_decorated_function = f'<{a}>{decorated_function(input_value)}</{a}>'
 
             if width and height:
-                result_decorated_function = f'<{a} width="{width}" heigth="{height}">{decorated_function(input_value)}</{a}>'
+                result_decorated_function = f'<{a} width={width} heigth={height}>{decorated_function(input_value)}</{a}>'
             elif width:
-                result_decorated_function = f'<{a} width="{width}">{decorated_function(input_value)}</{a}>'    
+                result_decorated_function = f'<{a} width={width}>{decorated_function(input_value)}</{a}>'    
             elif height:
-                result_decorated_function = f'<{a} height="{height}">{decorated_function(input_value)}</{a}>'
+                result_decorated_function = f'<{a} height={height}>{decorated_function(input_value)}</{a}>'
                 
             if href:
                 result_decorated_function = f'<{a} href="{href}">{decorated_function(input_value)}</{a}>'              
