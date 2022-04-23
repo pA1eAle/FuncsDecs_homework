@@ -41,23 +41,27 @@ print(125, plural_form(125, 'яблоко', 'яблока', 'яблок'))
 
 
 #Декоратор html
-def html(a, width=0, height=0, href=''):
+def html(a, **kwargs):
 
     def decorator(decorated_function):
 
         def function_inside_decorator(input_value):
             
             result_decorated_function = f'<{a}>{decorated_function(input_value)}</{a}>'
+            
+            width = kwargs.get('width', '')
+            height = kwargs.get('height', '')
+            href = kwargs.get('href', '')
 
-            if width and height:
-                result_decorated_function = f'<{a} width={str(width)} height={str(height)}>{decorated_function(input_value)}</{a}>'
-            elif width:
-                result_decorated_function = f'<{a} width={str(width)}>{decorated_function(input_value)}</{a}>'    
-            elif height:
-                result_decorated_function = f'<{a} height={str(height)}>{decorated_function(input_value)}</{a}>'
-                
-            if href:
-                result_decorated_function = f'<{a} href="{href}">{decorated_function(input_value)}</{a}>'              
+            if kwargs:
+                link_part1 = '<' + a
+                link_part2 = '>' + decorated_function(input_value) + '</' + a + '>'
+                for k,v in kwargs.items():
+                    print(k)
+                    print(v)
+                    link_part1 += ' ' + str(k) + '=' + '"' + str(v) + '"'
+                result_decorated_function = link_part1 + link_part2    
+                    
             
             return result_decorated_function
     
